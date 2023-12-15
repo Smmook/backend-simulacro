@@ -11,7 +11,7 @@ export const Episode = {
 
     const res = await fetch(url);
     if (res.status !== 200) {
-      throw new Error(`No se ha podido obtener los personajes ${ids}`);
+      throw new GraphQLError(`No se ha podido obtener los personajes ${ids}`);
     }
 
     return await res.json();
