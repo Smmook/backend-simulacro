@@ -16,17 +16,14 @@ export const Query = {
   },
 
   charactersByIds: async (_: any, args: { ids: string[] }) => {
-    const { ids } = args;
+    const ids = args.ids.join(",");
+    const url = `https://rickandmortyapi.com/api/character/[${ids}]`;
 
-    const characters = await Promise.all(ids.map(async (id) => {
-      const url = `https://rickandmortyapi.com/api/character/${id}`;
-      const res = await fetch(url);
-      if (res.status !== 200) {
-        throw new GraphQLError(`Error al obtener el personaje ${url}`);
-      }
-      return await res.json();
-    }));
+    const res = await fetch(url);
+    if (res.status !== 200) {
+      return new GraphQLError(`Error al obtener los personajes ${ids}`);
+    }
 
-    return characters;
+    return await res.json();
   },
 };
