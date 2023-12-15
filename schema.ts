@@ -2,7 +2,7 @@ export const typeDefs = `#graphql
     type Character {
         id: ID!
         name: String!
-        episode: [Episode!]!
+        episodes: [Episode!]!
     }
 
     type Episode {
