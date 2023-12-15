@@ -1,11 +1,11 @@
-export type Character = {
+export type CharacterType = {
   id: string;
   name: string;
-  episodes: Episode[];
+  episode: EpisodeType[];
 };
 
-export type Episode = {
+export type EpisodeType = {
   id: string;
   name: string;
-  characters: Character[];
+  characters: CharacterType[];
 };
